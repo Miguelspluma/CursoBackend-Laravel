@@ -16,3 +16,4 @@ Route::get('/backend', [BackendController::class, 'getAll']);
 Route::post('/backend', [BackendController::class, 'create']);
 //Route::get('/backend', [BackendController::class, 'get']);
 Route::put('/backend/{id}', [BackendController::class, 'update']);//parametros opcionales en url
+Route::delete('/backend/{id}', [BackendController::class, 'delete']);//parametros opcionales en url
