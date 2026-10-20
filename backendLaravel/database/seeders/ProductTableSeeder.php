@@ -25,7 +25,7 @@ class ProductTableSeeder extends Seeder
 
 
         //creación de productos
-        for ($i = 1; $i <= 50; $i++) {
+        for ($i = 1; $i <= 10000; $i++) {
             $products[] = [
                 'name' => 'Producto ' . $i,
                 'Description' => 'Descripción del producto ' . $i,
