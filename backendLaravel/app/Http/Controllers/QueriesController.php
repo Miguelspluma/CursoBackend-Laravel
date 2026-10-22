@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class QueriesController extends Controller
 {
@@ -81,6 +82,32 @@ class QueriesController extends Controller
                         $query->where("price", "Like", "%{$request->input("price")}%");
                     }
                 }
-            );
+            )
+            ->get();
+        return response()->json($products);
     }
+
+    public function join()
+    {
+        $products = Product::join('category', 'product.category_id', "=", "category.id")
+            ->select("product.*", "category.name as category")
+            ->get();
+
+        return response()->json($products);
+    }
+
+    public function groupBy()
+    {
+        $products = Product::join('category', 'product.category_id', "=", "category.id")
+            ->select("category.name","category.id", DB::raw("COUNT(product.id) as total"))
+            ->groupBy("category.id", "category.name",)
+            ->get();
+
+
+        return response()->json($products);
+    }
+
+
+
+
 }
