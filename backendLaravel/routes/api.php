@@ -3,6 +3,7 @@
 use App\Http\Controllers\BackendController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\QueriesController;
+use App\Http\Middleware\LogRequest;
 use Illuminate\Support\Facades\Route;
 
 
@@ -39,4 +40,5 @@ Route::get('/query/method/groupBy', [QueriesController::class, 'groupBy']);
 //CRUDS
 
 
-Route::apiResource('/product',ProductController::class);
+Route::apiResource('/product',ProductController::class)
+->middleware([LogRequest::class]);
