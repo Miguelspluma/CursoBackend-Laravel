@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BackendController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\QueriesController;
@@ -41,4 +42,16 @@ Route::get('/query/method/groupBy', [QueriesController::class, 'groupBy']);
 
 
 Route::apiResource('/product',ProductController::class)
-->middleware([LogRequest::class]);
+->middleware([LogRequest::class, "jwt.auth"]);
+
+
+//users
+
+Route::post('/register',[AuthController::class,'register']);
+Route::post('/login',[AuthController::class,'login']);
+
+
+//grupo de enpoints dentro de un middleware
+Route::middleware("jwt.auth")->group(function(){
+    Route::get('/who', [AuthController::class, 'who']);
+});
