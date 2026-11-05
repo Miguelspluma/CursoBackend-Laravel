@@ -54,4 +54,6 @@ Route::post('/login',[AuthController::class,'login']);
 //grupo de enpoints dentro de un middleware
 Route::middleware("jwt.auth")->group(function(){
     Route::get('/who', [AuthController::class, 'who']);
+    Route::get('/refresh', [AuthController::class, 'refresh']);
+    
 });
