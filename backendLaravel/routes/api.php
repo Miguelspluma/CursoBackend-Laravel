@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BackendController;
+use App\Http\Controllers\InfoController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\QueriesController;
 use App\Http\Middleware\LogRequest;
@@ -57,3 +58,6 @@ Route::middleware("jwt.auth")->group(function(){
     Route::get('/refresh', [AuthController::class, 'refresh']);
     
 });
+
+Route::get('/info/message', [InfoController::class, 'message']);
+Route::get('/info/tax/{id}', [InfoController::class, 'iva']);
