@@ -2,9 +2,11 @@
 
 namespace App\Providers;
 
+use App\Business\Interfaces\MessageServiceInterface as InterfacesMessageServiceInterface;
 use App\Business\Services\HiService;
+use App\Business\Services\HiUserService;
 use Illuminate\Support\ServiceProvider;
-use MessageServiceInterface;
+
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -15,7 +17,7 @@ class AppServiceProvider extends ServiceProvider
     {
         //}
 
-        $this->app->bind(MessageServiceInterface::class, HiService::class);
+        $this->app->bind(InterfacesMessageServiceInterface::class, HiUserService::class);
     }
 
     /**

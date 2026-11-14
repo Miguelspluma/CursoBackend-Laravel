@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Business\Interfaces\MessageServiceInterface;
 use App\Business\Services\HiService;
 use App\Business\Services\ProductService;
 use App\Models\Product;
 use Illuminate\Http\Request;
-use MessageServiceInterface;
+
 
 class InfoController extends Controller
 {

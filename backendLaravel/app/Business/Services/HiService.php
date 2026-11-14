@@ -2,7 +2,7 @@
 
 namespace App\Business\Services;
 
-use MessageServiceInterface;
+use App\Business\Interfaces\MessageServiceInterface;
 
 class HiService implements MessageServiceInterface{
     public function hi(){
