@@ -58,6 +58,25 @@ Route::middleware("jwt.auth")->group(function(){
     Route::get('/refresh', [AuthController::class, 'refresh']);
     
 });
-
+//inyeccion dependencias 
 Route::get('/info/message', [InfoController::class, 'message']);
 Route::get('/info/tax/{id}', [InfoController::class, 'iva']);
+
+//dependencias en contructor
+Route::get('/info/encrypt/{data}',[InfoController::class, 'encrypt']);
+Route::get('/info/decrypt/{data}',[InfoController::class, 'decrypt']);
+
+
+//clase con dependencias de otra clase inyectada
+Route::get('/info/encryptEmail/{id}', [InfoController::class, 'encryptEmail']);
+
+//context binding, sirve para definir que objeto se usa para que contexto, ejemplo un controlador, solo sirve en contructor de clase, no en parametros de función
+
+
+
+
+//singleton service
+Route::get('/info/singleton', [InfoController::class, 'singleton']);
+
+//tomando manualmente objetos del service container
+Route::get('/info/encryptEmail2/{id}', [InfoController::class, 'encryptEmail2']);
