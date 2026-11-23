@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ApiController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BackendController;
 use App\Http\Controllers\InfoController;
@@ -80,3 +81,8 @@ Route::get('/info/singleton', [InfoController::class, 'singleton']);
 
 //tomando manualmente objetos del service container
 Route::get('/info/encryptEmail2/{id}', [InfoController::class, 'encryptEmail2']);
+
+
+
+//consultando APi externa
+Route::get('/api', [ApiController::class, 'get']);
