@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Business\ExternalService\ApiService;
+use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
 
 class ApiServiceProvider extends ServiceProvider
@@ -25,5 +26,8 @@ class ApiServiceProvider extends ServiceProvider
     public function boot(): void
     {
         //
+        Route::get('/api/posts', function(ApiService $apiService){
+            return response()->json($apiService->getData());
+        });
     }
 }
